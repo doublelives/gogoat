@@ -8,34 +8,17 @@ const BaseLayout = () => {
   return (
     <div>
       <Layout>
-        <Sider
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            left: 0,
-          }}
-          theme='light'
-        >
-          sider
-        </Sider>
-        <Layout style={{margin: '0 200px'}}>
-          <Header style={{backgroundColor: '#fff'}}>Header</Header>
+        <Header style={{backgroundColor: "#fff"}}>Header</Header>
+        <Layout>
+          <Sider
+            theme='light'
+          >
+            sider
+          </Sider>
           <Content>
             <Outlet />
           </Content>
         </Layout>
-        <Sider
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            right: 0,
-          }}
-          theme='light'
-        >
-          sider
-        </Sider>
       </Layout>
     </div>
   );
