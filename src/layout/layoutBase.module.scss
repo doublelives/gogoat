@@ -1,0 +1,33 @@
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  .header-logo {
+    // position: absolute;
+    .logo-text {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: wheat;
+      border-radius: 20px;
+      border: 1px dashed wheat;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 10px;
+      &:hover {
+        font-weight: 600;
+        border-color: rosybrown;
+        color: rosybrown;
+        cursor: pointer;
+        transition: all 300ms;
+      }
+    }
+  }
+  .header-info {
+    margin-left: auto;
+  }
+}
+.sider-wrapper {
+  height: calc(100vh - 64px);
+}
+.content-wrapper {
+  
+}

@@ -2,9 +2,9 @@ import { Button } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-const Goods = () => {
+const Mine = () => {
   const nav = useNavigate()
-  return <Button onClick={() => nav('/')}>Goods</Button>
+  return <Button onClick={() => nav('/')}>Mine</Button>
 }
 
-export default Goods;
+export default Mine;
