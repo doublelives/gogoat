@@ -1,0 +1,9 @@
+.home-wrapper {
+  height: 100%;
+  min-height: 80vh;
+  padding: 24px;
+  background: #fff;
+  .task-list {
+    flex: 1;
+  }
+}

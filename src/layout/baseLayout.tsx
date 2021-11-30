@@ -1,8 +1,9 @@
 import React, { useState, useLayoutEffect } from "react";
-import { Avatar, Dropdown, Input, Layout, Menu } from "antd";
+import { Avatar, Breadcrumb, Dropdown, Input, Layout, Menu } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router";
-import { routes } from "@/routes";
+import { routes, aliasRouteMap } from "@/routes";
 import styles from "./layoutBase.module.scss";
+import { Link } from "react-router-dom";
 
 const { Header, Content, Sider } = Layout;
 
@@ -15,7 +16,7 @@ const MenuList = () => {
   };
   useLayoutEffect(() => {
     setOpenPath([curLocation.pathname]);
-  }, []);
+  }, [curLocation.pathname]);
   return (
     <Menu
       selectedKeys={openPath}
@@ -23,13 +24,18 @@ const MenuList = () => {
       mode="inline"
       theme="light"
     >
+      {
+        <Menu.Item key={'/'} onClick={() => nav('/')}>
+          Home
+        </Menu.Item>
+      }
       {routes[0]?.children
         ?.map((r, i) => {
           return (
             r.path &&
             r.path !== "*" && (
               <Menu.Item key={r.path ?? i} onClick={() => nav(r.path!)}>
-                {r.path}
+                {aliasRouteMap[r.path]}
               </Menu.Item>
             )
           );
@@ -47,6 +53,25 @@ const SettingMenu = () => {
     </Menu>
   );
 };
+ 
+const BreadcrumbList = () => {
+  const location = useLocation();
+  const pathSnippets = location.pathname.split('/').filter(i => i);
+  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+    return (
+      <Breadcrumb.Item key={url}>
+        <Link to={url}>{aliasRouteMap[url]}</Link>
+      </Breadcrumb.Item>
+    );
+  });
+  const breadcrumbItems = [
+    <Breadcrumb.Item key="home">
+      <Link to="/">Home</Link>
+    </Breadcrumb.Item>,
+  ].concat(extraBreadcrumbItems);
+  return <Breadcrumb className={styles['breadcrumb-wrapper']}>{breadcrumbItems}</Breadcrumb>
+}
 
 const BaseLayout = () => {
   const nav = useNavigate();
@@ -69,6 +94,7 @@ const BaseLayout = () => {
             <MenuList />
           </Sider>
           <Content className={styles["content-wrapper"]}>
+            <BreadcrumbList />
             <Outlet />
           </Content>
         </Layout>

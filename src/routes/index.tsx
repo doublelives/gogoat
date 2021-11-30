@@ -38,6 +38,12 @@ export const routes: RouteObject[] = [
   },
 ];
 
+export const aliasRouteMap = {
+  '/goods': '物料市场',
+  '/mine': '个人中心'
+};
+
+
 const RoutePage = () => {
   const routeElement = useRoutes(routes);
   return <>{routeElement}</>;

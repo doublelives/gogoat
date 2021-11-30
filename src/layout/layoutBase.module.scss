@@ -29,5 +29,8 @@
   height: calc(100vh - 64px);
 }
 .content-wrapper {
-  
+  padding: 0 50px 50px;
+  .breadcrumb-wrapper {
+    padding: 20px 0;
+  }
 }
