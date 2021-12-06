@@ -6,6 +6,7 @@ import Goods from "@/pages/goods";
 import NoMatch from "@/pages/NoMatch";
 import Mine from "@/pages/mine";
 import BaseLayout from "@/layout/baseLayout";
+import StudentManager from "@/pages/studentManager";
 
 // const RoutePage = () => <Routes>
 //   <Route path="/" element={<BaseLayout />}>
@@ -33,6 +34,10 @@ export const routes: RouteObject[] = [
         path: "/mine",
         element: <Mine />
       },
+      {
+        path: "/studentManger",
+        element: <StudentManager />
+      },
       { path: "*", element: <NoMatch /> },
     ],
   },
@@ -40,7 +45,8 @@ export const routes: RouteObject[] = [
 
 export const aliasRouteMap = {
   '/goods': '物料市场',
-  '/mine': '个人中心'
+  '/mine': '个人中心',
+  '/studentManger': '学生课时管理'
 };
 
 
