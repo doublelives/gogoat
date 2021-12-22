@@ -39,9 +39,7 @@ const columns = [
 const StudentManager = () => {
   const nav = useNavigate();
   return (
-    <Descriptions title="学生管理">
       <Table dataSource={dataSource} columns={columns} />
-    </Descriptions>
   );
 };
 
